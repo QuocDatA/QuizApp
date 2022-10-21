@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.widget.Toast
 import com.quocdat.quizapp.R
+import com.quocdat.quizapp.utils.Constants
 import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
@@ -16,7 +17,9 @@ class MainActivity : AppCompatActivity() {
             if (et_name.text?.isEmpty() == true){
                 Toast.makeText(this, "Please enter your name!", Toast.LENGTH_LONG).show()
             }else{
-                startActivity(Intent(this, QuizQuestionActivity::class.java))
+                val intent = Intent(this, QuizQuestionActivity::class.java)
+                intent.putExtra(Constants.USER_NAME, et_name.text.toString())
+                startActivity(intent)
                 finish()
             }
         }
